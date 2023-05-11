@@ -8,6 +8,10 @@ android {
     namespace 'ni.edu.uca.sistematicopersistencia'
     compileSdk 33
 
+    buildFeatures{
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "ni.edu.uca.sistematicopersistencia"
         minSdk 24
