@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.room.Entity
 import androidx.room.Room
 import kotlinx.coroutines.GlobalScope
@@ -28,8 +29,7 @@ class MainActivity : AppCompatActivity() {
             BaseDatos::class.java, "basedatos"
         ).build()
 
-        val btnAgregar = findViewById<Button>(R.id.btnAgregar)
-        btnAgregar.setOnClickListener {
+        binding.btnAgregar.setOnClickListener {
             val nombre = binding.etNombre.text.toString()
             val precio = binding.etPrecio.text.toString().toDoubleOrNull()
             val existencia = binding.etExistencia.text.toString().toIntOrNull()
@@ -41,9 +41,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Limpia los campos de texto después de insertar el producto
-            findViewById<EditText>(R.id.etNombre).text.clear()
-            findViewById<EditText>(R.id.etPrecio).text.clear()
-            findViewById<EditText>(R.id.etExistencia).text.clear()
+           binding.etNombre.text.clear()
+            binding.etPrecio.text.clear()
+            binding.etExistencia.text.clear()
+
+            Toast.makeText(this, "Se agregó correctamente el registro", Toast.LENGTH_SHORT).show()
         }
     }
 
